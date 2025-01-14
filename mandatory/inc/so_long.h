@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:12:51 by danielda          #+#    #+#             */
-/*   Updated: 2025/01/13 13:41:20 by danielda         ###   ########.fr       */
+/*   Updated: 2025/01/14 13:44:25 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,7 @@ void	render_map(t_game *game);
 int		surrounded_by_walls(char **map);
 int		count_chars(char **map, char c);
 int		validate_map(char **map);
+void	move_player(t_game *game, int px, int py);
+int		handle_key(int key, t_game *game);
 
 #endif
