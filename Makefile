@@ -5,20 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: danielda <danielda@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/12/16 19:35:48 by danielda          #+#    #+#              #
-#    Updated: 2025/01/08 13:06:46 by danielda         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: asilveir <asilveir@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/07 20:16:54 by asilveir          #+#    #+#              #
-#    Updated: 2024/12/09 16:51:20 by asilveir         ###   ########.fr        #
+#    Updated: 2025/01/17 17:35:02 by danielda         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,18 +21,23 @@ SRC = mandatory/src/so_long.c \
        mandatory/src/map.c \
        mandatory/src/render_map.c \
        mandatory/src/validate_map.c \
+	mandatory/src/exit.c \
+	mandatory/src/map_downl.c \
+	mandatory/src/print_map.c \
 
 # Compilators and flags
 CC = cc
-CFLAGS = -I$(INC_DIR) -Ilibft
-MLX_DIR = ./minilibx-linux
+# CFLAGS = -I$(INC_DIR) -Ilibft
+MLX_DIR = ./library/minilibx-linux
+CFLAGS = -I./mandatory/inc -I./library/minilibx-linux -I./library/libft
 
 # Libft directories
-LIBFT_DIR = ./libft
+LIBFT_DIR = ./library/libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
 # Link flags
-LDFLAGS = -L$(LIBFT_DIR) -lft -lX11 -lXext -lmlx
+LDFLAGS = -L$(LIBFT_DIR) -lft -L$(MLX_DIR) -lmlx -lX11 -lXext
+
 
 # Main rule
 all: $(LIBFT) $(NAME)
@@ -70,3 +63,4 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
+

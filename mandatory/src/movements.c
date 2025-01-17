@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 13:21:27 by danielda          #+#    #+#             */
-/*   Updated: 2025/01/14 13:44:39 by danielda         ###   ########.fr       */
+/*   Updated: 2025/01/17 16:34:14 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ int	handle_key(int key, t_game *game)
 
 	px = game->player_x;
 	py = game->player_y;
-	if (key != 65307 || 119 || 97 || 115 || 100)
-		return (0);
 	if (key == 65307)
 		exit_game(game);
 	else if (key == 119)

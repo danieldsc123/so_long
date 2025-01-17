@@ -5,22 +5,18 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/08 17:47:28 by danielda          #+#    #+#             */
-/*   Updated: 2025/01/09 16:46:46 by danielda         ###   ########.fr       */
+/*   Created: 2025/01/17 15:15:14 by danielda          #+#    #+#             */
+/*   Updated: 2025/01/17 16:34:28 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*#include "../inc/so_long.h"
-#include <stdio.h>
+#include "../inc/so_long.h"
 
-int	main(int argc, char **argv)
+void	print_map_term(void)
 {
-	if (argc != 2)
-	{
-		printf("Error\nUsage: ./so_long <map1.ber>\n");
-		return (1);
-	}
-	**map = load_map(argv[1]);
+	char	map;
+
+	map = read_map(argv[1]);
 	if (!map)
 	{
 		printf("Error: Failed to load map\n");
@@ -33,4 +29,21 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	return (0);
-}*/
+}
+
+void	print_map(char **map)
+{
+	int	i;
+
+	if (!map)
+	{
+		printf("Mapa inválido ou não carregado!\n");
+		return ;
+	}
+	i = 0;
+	while (map[i])
+	{
+		printf("%s\n", map[i]);
+		i++;
+	}
+}
