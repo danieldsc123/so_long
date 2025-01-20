@@ -1,49 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_map.c                                        :+:      :+:    :+:   */
+/*   library_map_mlx.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/17 15:15:14 by danielda          #+#    #+#             */
-/*   Updated: 2025/01/20 17:50:46 by danielda         ###   ########.fr       */
+/*   Created: 2025/01/20 15:52:24 by danielda          #+#    #+#             */
+/*   Updated: 2025/01/20 18:24:28 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-void	print_map_term(char **argv)
+void	window_mlx(void)
 {
-	char	**map;
+	void	*mlx_ptr;
+	void	*win_ptr;
 
-	map = read_map(argv[1]);
-	if (!map)
-	{
-		printf("Error: Failed to load map\n");
-		return ;
-	}
-	print_map(map);
-	if (!validate_map(map))
-	{
-		printf("Error: Invalid map\n");
-		return ;
-	}
-	return ;
-}
-
-void	print_map(char **map)
-{
-	int	i;
-
-	if (!map)
-	{
-		printf("Mapa inválido ou não carregado!\n");
-		return ;
-	}
-	i = 0;
-	while (map[i])
-	{
-		printf("%s\n", map[i]);
-		i++;
-	}
+	mlx_ptr = mlx_init();
+	win_ptr = mlx_new_window(mlx_ptr, WINDOW_WIDTH,
+			WINDOW_HEIGHT, "My first window!");
+	mlx_loop(mlx_ptr);
+	mlx_destroy_window(mlx_ptr, win_ptr);
+	mlx_destroy_display(mlx_ptr);
+	free(mlx_ptr);
 }

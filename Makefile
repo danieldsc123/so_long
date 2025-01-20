@@ -6,51 +6,55 @@
 #    By: danielda <danielda@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/07 20:16:54 by asilveir          #+#    #+#              #
-#    Updated: 2025/01/17 17:35:02 by danielda         ###   ########.fr        #
+#    Updated: 2025/01/20 19:20:20 by danielda         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+# Nome do projeto
 NAME = so_long
 
-# Src directory
+# Diretórios
 SRC_DIR = ./mandatory/src
 INC_DIR = ./mandatory/inc
 
-# List of files
+# Lista de arquivos
 SRC = mandatory/src/so_long.c \
        mandatory/src/map.c \
        mandatory/src/render_map.c \
        mandatory/src/validate_map.c \
-	mandatory/src/exit.c \
-	mandatory/src/map_downl.c \
-	mandatory/src/print_map.c \
+       mandatory/src/exit.c \
+       mandatory/src/map_downl.c \
+       mandatory/src/print_map.c \
+       mandatory/src/library_map_mlx.c \
+       mandatory/src/width_height.c \
+       mandatory/src/player_position.c \
+	mandatory/src/render.c \
+	mandatory/src/movements.c \
 
-# Compilators and flags
+# Compiladores e flags
 CC = cc
-# CFLAGS = -I$(INC_DIR) -Ilibft
-MLX_DIR = ./library/minilibx-linux
 CFLAGS = -I./mandatory/inc -I./library/minilibx-linux -I./library/libft
 
-# Libft directories
+# Diretórios da Libft
 LIBFT_DIR = ./library/libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
-# Link flags
+# Flags de linkagem
+MLX_DIR = ./library/minilibx-linux
 LDFLAGS = -L$(LIBFT_DIR) -lft -L$(MLX_DIR) -lmlx -lX11 -lXext
 
-
-# Main rule
+# Regra principal
 all: $(LIBFT) $(NAME)
 
-# Compile the game
+# Compilar o jogo
 $(NAME): $(SRC)
 	$(CC) $(CFLAGS) $(SRC) $(LIBFT) $(LDFLAGS) -o $(NAME)
 
-# Compile Libft
+# Compilar a Libft
 $(LIBFT):
 	make -C $(LIBFT_DIR)
 
-# Cleaning
+# Limpeza
 clean:
 	rm -rf $(NAME)
 	make clean -C $(LIBFT_DIR)
@@ -59,8 +63,11 @@ fclean: clean
 	rm -rf $(NAME)
 	make fclean -C $(LIBFT_DIR)
 
-# Rebuild
+# Recompilar
 re: fclean all
 
-.PHONY: all clean fclean re
+# Executar com Valgrind
+valgrind: $(NAME)
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME)
 
+.PHONY: all clean fclean re valgrind

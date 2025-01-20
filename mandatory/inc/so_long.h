@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:12:51 by danielda          #+#    #+#             */
-/*   Updated: 2025/01/17 18:07:39 by danielda         ###   ########.fr       */
+/*   Updated: 2025/01/20 18:44:44 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 // # include <mlx.h>
 # include <X11/keysym.h>
 # include <X11/X.h>
+# include <string.h> 
 
 # define TILE_SIZE 32
 # define WIDTH	900
@@ -70,6 +71,11 @@ typedef struct s_game
 	void	*player;
 	void	*exit;
 	void	*collectible;
+	int		player_x;
+	int		player_y;
+	int		collectibles;
+	int		map_width;
+	int		map_height;
 }t_game;
 
 typedef struct s_img
@@ -131,6 +137,12 @@ void	ft_draw_collectible(int x, int y, t_data data);
 void	ft_init_player(int x, int y, t_data data);
 void	ft_draw_exit(int x, int y, t_data data);
 void	exit_game(t_game *game);
-void	print_map_term(void);
+void	print_map_term(char **argv);
 void	print_map(char **map);
+void	initialize_game(t_game *game, char *map_path);
+int		find_player_x(char **map);
+int		find_player_y(char **map);
+int		get_map_width(char **map);
+int		get_map_height(char **map);
+
 #endif

@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:11:45 by danielda          #+#    #+#             */
-/*   Updated: 2025/01/17 19:02:31 by danielda         ###   ########.fr       */
+/*   Updated: 2025/01/20 19:17:53 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,58 +18,44 @@
 //  #define WINDOW_WIDTH 900
 //  #define WINDOW_HEIGHT 300
 
-void	window_mlx(void)
-{
-	void	*mlx_ptr;
-	void	*win_ptr;
-
-	mlx_ptr = mlx_init();
-	win_ptr = mlx_new_window(mlx_ptr, WINDOW_WIDTH,
-			WINDOW_HEIGHT, "My first window!");
-	mlx_loop(mlx_ptr);
-	mlx_destroy_window(mlx_ptr, win_ptr);
-	mlx_destroy_display(mlx_ptr);
-	free(mlx_ptr);
-}
-
 int	main(int argc, char **argv)
 {
-	t_data	data;
+	t_game	game;
 
 	if (argc != 2)
 	{
-		printf("Error\nUsage: ./so_long <map.ber>\n");
+		write(2, "Error\nUsage: ./so_long <map.ber>\n", 33);
 		return (1);
 	}
-	//map = print_map_term();
-	if (//ft_init_game(&data, argv[1]) != 0)
-	{
-		ft_exit_game(&data);
-		return (1);
-	}
-	mlx_loop_hook(data.mlx_ptr, &//handle_no_event, &data);
-	mlx_hook(data.win_ptr, keypress, 1l << 0, &//ft_handle_movement, &data);
-	mlx_loop(data.mlx_ptr);
-	//ft_cleanup(&data);
-}
+	initialize_game(&game, argv[1]);
+	render_map(&game);
+	mlx_loop(game.mlx);
+	return (0);
+}	
 
-void	print_map(char **map)
+void	initialize_game(t_game *game, char *map_path)
 {
-	int	i;
+	int	map_width;
+	int	map_height;
 
-	if (!map)
+	game->mlx = mlx_init();
+	if (!game->mlx)
 	{
-		printf("Mapa inválido ou não carregado!\n");
-		return ;
+		write(2, "Error: Failed to initialize MLX\n", 32);
+		exit(1);
 	}
-	i = 0;
-	while (map[i])
+	game->map = read_map(map_path);
+	if (!game->map || !validate_map(game->map))
 	{
-		printf("%s\n", map[i]);
-		i++;
+		write(2, "Error: Invalid map\n", 19);
+		exit(1);
 	}
-}
-
-void	window_inf(void)
-{
+	game->player_x = find_player_x(game->map);
+	game->player_y = find_player_y(game->map);
+	game->collectibles = count_chars(game->map, 'C');
+	map_width = get_map_width(game->map);
+	map_height = get_map_height(game->map);
+	game->win = mlx_new_window(game->mlx, map_width * 32,
+			map_height * 32, "so_long");
+	load_textures(game);
 }
