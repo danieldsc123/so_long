@@ -6,46 +6,33 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 13:46:42 by danielda          #+#    #+#             */
-/*   Updated: 2025/01/08 12:29:25 by danielda         ###   ########.fr       */
+/*   Updated: 2025/01/21 20:04:06 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "get_next_line.h"
 
-int	ft_endl(char	*buffer)
-{
-	size_t	i;
-
-	i = 0;
-	while (buffer[i] != '\n' && buffer[i] != '\0')
-		i++;
-	if (buffer[i] == '\n')
-		return (1);
-	return (0);
-}
-
 char	*read_fd(int fd, char *stash)
 {
-	char		*buffer;
-	char		*temp;
-	long long	bytes_read;
+	char	*buffer;
+	int		bytes_read;
 
-	bytes_read = 1;
 	buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!buffer)
-		return (free(buffer), NULL);
-	while (bytes_read != 0 && !ft_strchr(stash, '\n'))
+		return (NULL);
+	bytes_read = 1;
+	while (!ft_strchr(stash, '\n') && bytes_read != 0)
 	{
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
 		if (bytes_read < 0)
-			return (free(buffer), free(stash), NULL);
+		{
+			free(stash);
+			free(buffer);
+			return (NULL);
+		}
 		buffer[bytes_read] = '\0';
-		if (!stash)
-			stash = ft_strdup("");
-		temp = stash;
-		stash = ft_strjoin(temp, buffer);
-		free(temp);
+		stash = ft_strjoin(stash, buffer);
 	}
 	free (buffer);
 	return (stash);
@@ -72,55 +59,41 @@ char	*get_current_line(char *stash)
 
 char	*string_to_add(char *stash)
 {
-	char	*new_stash;
+	char	*string;
 	int		i;
 	int		j;
 
 	i = 0;
 	j = 0;
-	while (stash[i] != '\0' && stash[i] != '\n')
+	while (stash[i] && stash[i] != '\n')
 		i++;
 	if (!stash[i])
-	{
-		free (stash);
-		return (NULL);
-	}
-	new_stash = malloc(sizeof(char) * (ft_strlen(stash) - i));
-	if (!new_stash)
 	{
 		free(stash);
 		return (NULL);
 	}
+	string = malloc(sizeof(char) * (ft_strlen(stash) - i + 1));
+	if (!string)
+		return (NULL);
 	i++;
-	while (stash[i] != '\0')
-		new_stash[j++] = stash[i++];
-	new_stash[j] = '\0';
-	free(stash);
-	return (new_stash);
+	while (stash[i])
+		string[j++] = stash[i++];
+	string[j] = '\0';
+	free (stash);
+	return (string);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*stash = NULL;
 	char		*line;
+	static char	*stash;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	stash = (read_fd(fd, stash));
+	stash = read_fd(fd, stash);
 	if (!stash)
 		return (NULL);
 	line = get_current_line(stash);
-	if (!line || !(*line))
-	{
-		free(stash);
-		stash = (NULL);
-		return (NULL);
-	}
 	stash = string_to_add(stash);
-	if (!stash)
-	{
-		free(stash);
-		stash = (NULL);
-	}
 	return (line);
 }

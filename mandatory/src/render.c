@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 15:52:37 by danielda          #+#    #+#             */
-/*   Updated: 2025/01/17 16:34:40 by danielda         ###   ########.fr       */
+/*   Updated: 2025/01/22 16:51:36 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,15 @@ void	load_textures(t_game *game)
 
 	size = 32;
 	game->wall = mlx_xpm_file_to_image(game->mlx,
-			"assets/wall.xpm", &size, &size);
+			"image/wall.xpm", &size, &size);
 	game->floor = mlx_xpm_file_to_image(game->mlx,
-			"assets/floor.xpm", &size, &size);
+			"image/floor.xpm", &size, &size);
 	game->player = mlx_xpm_file_to_image(game->mlx,
-			"assets/player.xpm", &size, &size);
+			"image/player.xpm", &size, &size);
 	game->exit = mlx_xpm_file_to_image(game->mlx,
-			"assets/exit.xpm", &size, &size);
+			"image/exit.xpm", &size, &size);
 	game->collectible = mlx_xpm_file_to_image(game->mlx,
-			"assets/collectible.xpm", &size, &size);
+			"image/collectible.xpm", &size, &size);
 	if (!game->wall || !game->floor || !game->player
 		|| !game->exit || !game->collectible)
 	{

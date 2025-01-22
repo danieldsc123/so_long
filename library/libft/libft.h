@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 19:10:38 by danielda          #+#    #+#             */
-/*   Updated: 2025/01/08 11:34:03 by danielda         ###   ########.fr       */
+/*   Updated: 2025/01/21 19:45:32 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,5 @@ int		ft_endl(char *buffer);
 char	*string_to_add(char *s);
 char	*get_current_line(char *stash);
 char	*get_next_line(int fd);
+char	*read_fd(int fd, char *stash);
 #endif

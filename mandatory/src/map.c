@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:08:21 by danielda          #+#    #+#             */
-/*   Updated: 2025/01/20 19:33:12 by danielda         ###   ########.fr       */
+/*   Updated: 2025/01/22 15:52:27 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	**read_map(const char *file)
 	if (!map)
 		return (NULL);
 	line = get_next_line(fd);
-	while (line)
+	while (line != NULL)
 	{
 		map[i] = line;
 		i++;
