@@ -6,14 +6,14 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:11:45 by danielda          #+#    #+#             */
-/*   Updated: 2025/01/22 17:03:30 by danielda         ###   ########.fr       */
+/*   Updated: 2025/01/25 18:05:08 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //#include <mlx.h>
 #include "../inc/so_long.h"
 #include <stdlib.h>
-#include <stdio.h>
+//#include <stdio.h>
 
 //  #define WINDOW_WIDTH 900
 //  #define WINDOW_HEIGHT 300
@@ -57,5 +57,6 @@ int	main(int argc, char **argv)
 	initialize_game(&game, argv[1]);
 	render_map(&game);
 	mlx_loop(game.mlx);
+	mlx_key_hook(game.win, handle_key, &game);
 	return (0);
 }	

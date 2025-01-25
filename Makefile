@@ -6,7 +6,7 @@
 #    By: danielda <danielda@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/07 20:16:54 by asilveir          #+#    #+#              #
-#    Updated: 2025/01/21 17:39:39 by danielda         ###   ########.fr        #
+#    Updated: 2025/01/24 15:15:16 by danielda         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,15 +33,15 @@ SRC = mandatory/src/so_long.c \
 
 # Compiladores e flags
 CC = cc -Wall -Wextra -Werror
-CFLAGS = -I./mandatory/inc -I./library/minilibx-linux -I./library/libft
+CFLAGS = -I./mandatory/inc -I$(MLX_DIR) -I$(LIBFT_DIR)
 
 # Diretórios da Libft
 LIBFT_DIR = ./library/libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
 # Flags de linkagem
-MLX_DIR = ./library/minilibx-linux
-LDFLAGS = -L$(LIBFT_DIR) -lft -L$(MLX_DIR) -lmlx -lX11 -lXext
+MLX_DIR = ./library/minilibx-linux/minilibx-linux
+LDFLAGS = -L$(LIBFT_DIR) -lft -L$(MLX_DIR) -lmlx_Linux -lX11 -lXext
 
 # Regra principal
 all: $(LIBFT) $(NAME)

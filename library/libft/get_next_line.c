@@ -6,12 +6,13 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 13:46:42 by danielda          #+#    #+#             */
-/*   Updated: 2025/01/21 20:04:06 by danielda         ###   ########.fr       */
+/*   Updated: 2025/01/23 16:23:15 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "get_next_line.h"
+#include <stdio.h>
 
 char	*read_fd(int fd, char *stash)
 {
@@ -93,7 +94,10 @@ char	*get_next_line(int fd)
 	stash = read_fd(fd, stash);
 	if (!stash)
 		return (NULL);
+	printf("\n passou do read");
 	line = get_current_line(stash);
+	printf("\n passou do current line");
 	stash = string_to_add(stash);
+	printf("\n passou do string");
 	return (line);
 }

@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 13:21:27 by danielda          #+#    #+#             */
-/*   Updated: 2025/01/17 16:34:14 by danielda         ###   ########.fr       */
+/*   Updated: 2025/01/23 16:05:12 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,15 @@ int	handle_key(int key, t_game *game)
 
 	px = game->player_x;
 	py = game->player_y;
-	if (key == 65307)
+	if (key == KEY_ESC)
 		exit_game(game);
-	else if (key == 119)
+	else if (key == KEY_W)
 		py--;
-	else if (key == 97)
+	else if (key == KEY_A)
 		px--;
-	else if (key == 115)
+	else if (key == KEY_S)
 		py++;
-	else if (key == 100)
+	else if (key == KEY_D)
 		px++;
 	if (game->map[py][px] != '1')
 		move_player(game, px, py);

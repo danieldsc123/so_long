@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:12:51 by danielda          #+#    #+#             */
-/*   Updated: 2025/01/21 19:35:23 by danielda         ###   ########.fr       */
+/*   Updated: 2025/01/24 14:10:30 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,23 +25,30 @@
 # include <stdlib.h>
 # include <math.h>
 # include <stdio.h>
-// # include <mlx.h>
+//# include <mlx.h>
 # include <X11/keysym.h>
 # include <X11/X.h>
 # include <string.h> 
 
 # define TILE_SIZE 32
-# define WIDTH	900
-# define HEIGHT	900
+//# define WIDTH	900
+//# define HEIGHT	900
 # define WND_NAME "so_long"
 # define WINDOW_WIDTH 900
-# define WINDOW_HEIGHT 300
+# define WINDOW_HEIGHT 700
 
 # define WALL '1'
 # define FLOOR '0'
 # define PLAYER 'p'
 # define EXIT 'E'
 # define COLLECTIBLE 'C'
+
+// Macros para códigos de tecla
+# define KEY_ESC 65307   // Código para a tecla ESC
+# define KEY_W   119     // Código para a tecla W
+# define KEY_A   97      // Código para a tecla A
+# define KEY_S   115     // Código para a tecla S
+# define KEY_D   100     // Código para a tecla D
 
 typedef struct s_map
 {
