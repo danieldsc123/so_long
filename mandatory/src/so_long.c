@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:11:45 by danielda          #+#    #+#             */
-/*   Updated: 2025/01/25 18:05:08 by danielda         ###   ########.fr       */
+/*   Updated: 2025/01/29 16:38:28 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,16 +47,19 @@ void	initialize_game(t_game *game, char *map_path)
 
 int	main(int argc, char **argv)
 {
-	t_game	game;
+	t_game	*game;
 
+	game = malloc((sizeof(t_game) * 1));
 	if (argc != 2)
 	{
 		write(2, "Error\nUsage: ./so_long <map.ber>\n", 33);
 		return (1);
 	}
-	initialize_game(&game, argv[1]);
-	render_map(&game);
-	mlx_loop(game.mlx);
-	mlx_key_hook(game.win, handle_key, &game);
+	initialize_game(game, argv[1]);
+	init_images(game);
+	render_map(game);
+	mlx_key_hook(game->win, handle_key, game);
+	mlx_loop(game->mlx);
+	exit_game(game);
 	return (0);
 }	

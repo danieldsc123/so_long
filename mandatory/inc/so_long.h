@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:12:51 by danielda          #+#    #+#             */
-/*   Updated: 2025/01/24 14:10:30 by danielda         ###   ########.fr       */
+/*   Updated: 2025/01/29 16:51:51 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@
 //# define WIDTH	900
 //# define HEIGHT	900
 # define WND_NAME "so_long"
-# define WINDOW_WIDTH 900
-# define WINDOW_HEIGHT 700
+# define WINDOW_WIDTH 700
+# define WINDOW_HEIGHT 600
 
 # define WALL '1'
 # define FLOOR '0'
@@ -130,11 +130,12 @@ char	**read_map(const char *file);
 int		main(int argc, char **argv);
 void	load_textures(t_game *game);
 void	render_map(t_game *game);
+void	render_tile(t_game *game, char tile, int x, int y);
 int		surrounded_by_walls(char **map);
 int		count_chars(char **map, char c);
 int		validate_map(char **map);
 void	move_player(t_game *game, int px, int py);
-int		handle_key(int key, t_game *game);
+int		handle_key(int key, void *param);
 char	**load_map(const char *file_path);
 int		validate_map(char **map);
 void	print_map(char **map);
@@ -151,5 +152,7 @@ int		find_player_x(char **map);
 int		find_player_y(char **map);
 int		get_map_width(char **map);
 int		get_map_height(char **map);
+void	init_images(t_game *game);
+void	load_image(t_game *game, void **img, char *path);
 
 #endif

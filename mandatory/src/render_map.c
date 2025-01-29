@@ -6,18 +6,38 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 17:02:27 by danielda          #+#    #+#             */
-/*   Updated: 2025/01/25 18:53:59 by danielda         ###   ########.fr       */
+/*   Updated: 2025/01/29 16:54:08 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //#include <mlx.h>
 #include "../inc/so_long.h"
 
+void	render_tile(t_game *game, char tile, int x, int y)
+{
+	if (tile == '1')
+		mlx_put_image_to_window(game->mlx, game->win, game->wall,
+			x * TILE_SIZE, y * TILE_SIZE);
+	else
+	{
+		mlx_put_image_to_window(game->mlx, game->win, game->floor,
+			x * TILE_SIZE, y * TILE_SIZE);
+		if (tile == 'P')
+			mlx_put_image_to_window(game->mlx, game->win, game->player,
+				x * TILE_SIZE, y * TILE_SIZE);
+		else if (tile == 'C')
+			mlx_put_image_to_window(game->mlx, game->win,
+				game->collectible, x * TILE_SIZE, y * TILE_SIZE);
+		else if (tile == 'E')
+			mlx_put_image_to_window(game->mlx, game->win, game->exit,
+				x * TILE_SIZE, y * TILE_SIZE);
+	}
+}
+
 void	render_map(t_game *game)
 {
-	int		y;
-	int		x;
-	void	*img;
+	int	y;
+	int	x;
 
 	y = 0;
 	while (game->map[y])
@@ -25,18 +45,35 @@ void	render_map(t_game *game)
 		x = 0;
 		while (game->map[y][x])
 		{
-			img = game->floor;
-			if (game->map[y][x] == '1')
-			img = game->wall;
-			else if (game->map[y][x] == 'P')
-			img = game->player;
-			else if (game->map[y][x] == 'C')
-			img = game->collectible;
-			else if (game->map[y][x] == 'E')
-			img = game->exit;
-			mlx_put_image_to_window(game->mlx, game->win, img, x * 32, y * 32);
+			render_tile(game, game->map[y][x], x, y);
 			x++;
 		}
 		y++;
 	}
+}
+
+void	load_image(t_game *game, void **img, char *path)
+{
+	int	img_x;
+	int	img_y;
+
+	img_x = TILE_SIZE;
+	img_y = TILE_SIZE;
+	*img = mlx_xpm_file_to_image(game->mlx, path, &img_x, &img_y);
+	if (!*img)
+	{
+		write(2, "Error: Failed to load ", 24);
+		write(2, path, ft_strlen(path));
+		write(2, "\n", 1);
+		exit(1);
+	}
+}
+
+void	init_images(t_game *game)
+{
+	load_image(game, &game->wall, "image/wall.xpm");
+	load_image(game, &game->floor, "image/floor.xpm");
+	load_image(game, &game->exit, "image/exit.xpm");
+	load_image(game, &game->player, "image/player.xpm");
+	load_image(game, &game->collectible, "image/collectible.xpm");
 }

@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 16:23:41 by danielda          #+#    #+#             */
-/*   Updated: 2025/01/21 17:42:12 by danielda         ###   ########.fr       */
+/*   Updated: 2025/01/29 16:57:20 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	get_map_width(char **map_data)
 	map = map_data;
 	if (!map[0])
 		return (0);
-	return (strlen(map[0]) - 1);
+	return (ft_strlen(map[0]) - 1);
 }
 
 int	get_map_height(char **map)
