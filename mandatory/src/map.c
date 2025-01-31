@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:08:21 by danielda          #+#    #+#             */
-/*   Updated: 2025/01/31 17:41:00 by danielda         ###   ########.fr       */
+/*   Updated: 2025/01/31 18:04:25 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ char	**read_map(const char *file)
 	line = get_next_line(fd);
 	while (line != NULL)
 	{
-		printf("errorgnl\n");
 		map[i] = line;
 		i++;
 		line = get_next_line(fd);
