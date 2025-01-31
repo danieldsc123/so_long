@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:12:51 by danielda          #+#    #+#             */
-/*   Updated: 2025/01/29 16:51:51 by danielda         ###   ########.fr       */
+/*   Updated: 2025/01/31 17:09:40 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,5 +154,6 @@ int		get_map_width(char **map);
 int		get_map_height(char **map);
 void	init_images(t_game *game);
 void	load_image(t_game *game, void **img, char *path);
-
+void	free_map(char **map, int size);
+char	*get_next_line(int fd);
 #endif

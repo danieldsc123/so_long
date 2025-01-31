@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:11:45 by danielda          #+#    #+#             */
-/*   Updated: 2025/01/29 16:38:28 by danielda         ###   ########.fr       */
+/*   Updated: 2025/01/31 17:31:01 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int	main(int argc, char **argv)
 	game = malloc((sizeof(t_game) * 1));
 	if (argc != 2)
 	{
+		printf("error");
 		write(2, "Error\nUsage: ./so_long <map.ber>\n", 33);
 		return (1);
 	}
