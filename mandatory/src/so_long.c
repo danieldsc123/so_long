@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:11:45 by danielda          #+#    #+#             */
-/*   Updated: 2025/01/31 18:07:42 by danielda         ###   ########.fr       */
+/*   Updated: 2025/01/31 20:53:30 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,12 @@ void	initialize_game(t_game *game, char *map_path)
 	load_textures(game);
 }
 
+int	handle_exit(void *param)
+{
+	exit_game((t_game *)param);
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	t_game	*game;
@@ -53,11 +59,13 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 	{
 		write(2, "Error\nUsage: ./so_long <map.ber>\n", 33);
+		free(game);
 		return (1);
 	}
 	initialize_game(game, argv[1]);
 	init_images(game);
 	render_map(game);
+	mlx_hook(game->win, 17, 0, handle_exit, game);
 	mlx_key_hook(game->win, handle_key, game);
 	mlx_loop(game->mlx);
 	exit_game(game);

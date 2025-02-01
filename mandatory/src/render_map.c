@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 17:02:27 by danielda          #+#    #+#             */
-/*   Updated: 2025/01/29 16:54:08 by danielda         ###   ########.fr       */
+/*   Updated: 2025/01/31 21:01:15 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void	render_map(t_game *game)
 		}
 		y++;
 	}
+	mlx_do_sync(game->mlx);
 }
 
 void	load_image(t_game *game, void **img, char *path)
