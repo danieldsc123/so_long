@@ -6,11 +6,10 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 17:02:27 by danielda          #+#    #+#             */
-/*   Updated: 2025/01/31 21:01:15 by danielda         ###   ########.fr       */
+/*   Updated: 2025/02/03 17:44:31 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <mlx.h>
 #include "../inc/so_long.h"
 
 void	render_tile(t_game *game, char tile, int x, int y)
@@ -18,23 +17,21 @@ void	render_tile(t_game *game, char tile, int x, int y)
 	if (tile == '1')
 		mlx_put_image_to_window(game->mlx, game->win, game->wall,
 			x * TILE_SIZE, y * TILE_SIZE);
-	else
-	{
+	else if (tile == '0')
 		mlx_put_image_to_window(game->mlx, game->win, game->floor,
 			x * TILE_SIZE, y * TILE_SIZE);
-		if (tile == 'P')
-			mlx_put_image_to_window(game->mlx, game->win, game->player,
-				x * TILE_SIZE, y * TILE_SIZE);
-		else if (tile == 'C')
-			mlx_put_image_to_window(game->mlx, game->win,
-				game->collectible, x * TILE_SIZE, y * TILE_SIZE);
-		else if (tile == 'E')
-			mlx_put_image_to_window(game->mlx, game->win, game->exit,
-				x * TILE_SIZE, y * TILE_SIZE);
-	}
+	else if (tile == 'P')
+		mlx_put_image_to_window(game->mlx, game->win, game->player,
+			x * TILE_SIZE, y * TILE_SIZE);
+	else if (tile == 'C')
+		mlx_put_image_to_window(game->mlx, game->win,
+			game->collectible, x * TILE_SIZE, y * TILE_SIZE);
+	else if (tile == 'E')
+		mlx_put_image_to_window(game->mlx, game->win, game->exit,
+			x * TILE_SIZE, y * TILE_SIZE);
 }
 
-void	render_map(t_game *game)
+int	render_map(t_game *game)
 {
 	int	y;
 	int	x;
@@ -51,6 +48,7 @@ void	render_map(t_game *game)
 		y++;
 	}
 	mlx_do_sync(game->mlx);
+	return (0);
 }
 
 void	load_image(t_game *game, void **img, char *path)

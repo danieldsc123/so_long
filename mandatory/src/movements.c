@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 13:21:27 by danielda          #+#    #+#             */
-/*   Updated: 2025/01/31 21:03:23 by danielda         ###   ########.fr       */
+/*   Updated: 2025/02/03 19:19:15 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,23 @@ int	handle_key(int key, void *param)
 	t_game	*game;
 
 	game = (t_game *)param;
+	printf("Tecla pressionada: %d\n", key);
 	px = game->player_x;
 	py = game->player_y;
 	if (key == KEY_ESC)
 		mlx_loop_end(game->mlx);
 	else if (key == KEY_W)
-		py--;
+		printf("movendo para cima\n");
+		//py--;
 	else if (key == KEY_A)
-		px--;
+		printf("movendo para esquerda\n");
+		//px--;
 	else if (key == KEY_S)
-		py++;
+		printf("movendo para baixo\n");
+		//py++;
 	else if (key == KEY_D)
-		px++;
+		printf("movendo para direita\n");
+		//px++;
 	if (px < 0 || py < 0 || px >= get_map_width(game->map)
 		|| py >= get_map_height(game->map))
 		return (0);

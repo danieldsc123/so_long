@@ -6,17 +6,12 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:11:45 by danielda          #+#    #+#             */
-/*   Updated: 2025/01/31 20:53:30 by danielda         ###   ########.fr       */
+/*   Updated: 2025/02/03 17:16:08 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <mlx.h>
 #include "../inc/so_long.h"
 #include <stdlib.h>
-//#include <stdio.h>
-
-//  #define WINDOW_WIDTH 900
-//  #define WINDOW_HEIGHT 300
 
 void	initialize_game(t_game *game, char *map_path)
 {
@@ -65,8 +60,8 @@ int	main(int argc, char **argv)
 	initialize_game(game, argv[1]);
 	init_images(game);
 	render_map(game);
-	mlx_hook(game->win, 17, 0, handle_exit, game);
 	mlx_key_hook(game->win, handle_key, game);
+	mlx_hook(game->win, 17, 0, handle_exit, game);
 	mlx_loop(game->mlx);
 	exit_game(game);
 	return (0);

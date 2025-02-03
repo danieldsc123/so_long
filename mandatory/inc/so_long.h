@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:12:51 by danielda          #+#    #+#             */
-/*   Updated: 2025/01/31 20:42:30 by danielda         ###   ########.fr       */
+/*   Updated: 2025/02/03 17:48:28 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,7 @@ typedef struct s_data
 char	**read_map(const char *file);
 int		main(int argc, char **argv);
 void	load_textures(t_game *game);
-void	render_map(t_game *game);
+int		render_map(t_game *game);
 void	render_tile(t_game *game, char tile, int x, int y);
 int		surrounded_by_walls(char **map);
 int		count_chars(char **map, char c);
