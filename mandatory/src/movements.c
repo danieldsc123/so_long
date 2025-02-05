@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 13:21:27 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/03 19:19:15 by danielda         ###   ########.fr       */
+/*   Updated: 2025/02/05 17:12:04 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,53 @@ void	move_player(t_game *game, int px, int py)
 		exit_game(game);
 }
 
+// int	handle_key(int key, void *param)
+// {
+// 	int		px;
+// 	int		py;
+// 	t_game	*game;
+
+// 	game = (t_game *)param;
+// 	printf("Tecla pressionada: %d\n", key);
+// 	px = game->player_x;
+// 	py = game->player_y;
+// 	if (key == KEY_ESC)
+// 		mlx_loop_end(game->mlx);
+// 	else if (key == KEY_W)
+// 	{
+// 		printf("movendo para cima\n");
+// 		move_player(game, px, py);
+// 		py--;
+// 	}
+// 	else if (key == KEY_A)
+// 	{
+// 		printf("movendo para esquerda\n");
+// 		move_player(game, px, py);
+// 		px--;
+// 	}
+// 	else if (key == KEY_S)
+// 	{
+// 		printf("movendo para baixo\n");
+// 		move_player(game, px, py);
+// 		py++;
+// 	}
+// 	else if (key == KEY_D)
+// 	{
+// 		printf("movendo para direita\n");
+// 		move_player(game, px, py);
+// 		px++;
+// 	}
+// 	if (px >= 0 && py >= 0 && px < get_map_width(game->map)
+// 		&& py < get_map_height(game->map))
+// 		return (0);
+// 	if (game->map[py][px] != '1')
+// 	{
+// 		printf("Movendo player para (%d, %d)\n", px, py);
+// 		move_player(game, px, py);
+// 	}
+// 	return (0);
+// }
+
 int	handle_key(int key, void *param)
 {
 	int		px;
@@ -32,23 +79,18 @@ int	handle_key(int key, void *param)
 	t_game	*game;
 
 	game = (t_game *)param;
-	printf("Tecla pressionada: %d\n", key);
 	px = game->player_x;
 	py = game->player_y;
 	if (key == KEY_ESC)
 		mlx_loop_end(game->mlx);
 	else if (key == KEY_W)
-		printf("movendo para cima\n");
-		//py--;
+		py--;
 	else if (key == KEY_A)
-		printf("movendo para esquerda\n");
-		//px--;
+		px--;
 	else if (key == KEY_S)
-		printf("movendo para baixo\n");
-		//py++;
+		py++;
 	else if (key == KEY_D)
-		printf("movendo para direita\n");
-		//px++;
+		px++;
 	if (px < 0 || py < 0 || px >= get_map_width(game->map)
 		|| py >= get_map_height(game->map))
 		return (0);
