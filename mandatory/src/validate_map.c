@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 12:29:38 by danielda          #+#    #+#             */
-/*   Updated: 2025/01/21 19:18:12 by danielda         ###   ########.fr       */
+/*   Updated: 2025/02/07 19:18:01 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,16 @@ int	count_chars(char **map, char c)
 	count = 0;
 	i = 0;
 	j = 0;
-	while (map[i])
+	while (map[j])
 	{
-		while (map[i][j])
+		i = 0;
+		while (map[j][i])
 		{
-			if (map[i][j] == c)
-			count++;
-			j++;
+			if (map[j][i] == c)
+				count++;
+			i++;
 		}
-		i++;
+		j++;
 	}
 	return (count);
 }
@@ -62,7 +63,7 @@ int	validate_map(char **map)
 		return (0);
 	if (count_chars(map, 'P') != 1)
 		return (0);
-	if (count_chars(map, 'E') < 1)
+	if (count_chars(map, 'E') != 1)
 		return (0);
 	if (count_chars(map, 'C') < 1)
 		return (0);
