@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:12:51 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/03 17:48:28 by danielda         ###   ########.fr       */
+/*   Updated: 2025/02/08 20:08:29 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ typedef struct s_game
 	int		collectibles;
 	int		map_width;
 	int		map_height;
+	int		steps;
 }t_game;
 
 typedef struct s_img
@@ -157,4 +158,5 @@ void	load_image(t_game *game, void **img, char *path);
 void	free_map(char **map, int size);
 char	*get_next_line(int fd);
 int		handle_exit(void *param);
+
 #endif

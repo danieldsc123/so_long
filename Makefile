@@ -6,7 +6,7 @@
 #    By: danielda <danielda@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/07 20:16:54 by asilveir          #+#    #+#              #
-#    Updated: 2025/01/24 15:15:16 by danielda         ###   ########.fr        #
+#    Updated: 2025/02/08 19:34:58 by danielda         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ SRC = mandatory/src/so_long.c \
        mandatory/src/exit.c \
        mandatory/src/map_downl.c \
        mandatory/src/print_map.c \
-       mandatory/src/library_map_mlx.c \
+       mandatory/src/flood.c \
        mandatory/src/width_height.c \
        mandatory/src/player_position.c \
 	mandatory/src/render.c \
