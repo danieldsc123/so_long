@@ -6,17 +6,13 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:12:51 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/08 20:08:29 by danielda         ###   ########.fr       */
+/*   Updated: 2025/02/09 21:23:26 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-//# include "../inc/get_next_line.h"
-//# include "/full/path/to/so_long/get_next_line.h"
-//# include "../../libft/get_next_line.h"
-//# include "../../libft/libft.h"
 # include "../../library/minilibx-linux/minilibx-linux/mlx.h"
 # include "../../library/libft/libft.h"
 # include <unistd.h>
@@ -31,8 +27,6 @@
 # include <string.h> 
 
 # define TILE_SIZE 32
-//# define WIDTH	900
-//# define HEIGHT	900
 # define WND_NAME "so_long"
 # define WINDOW_WIDTH 700
 # define WINDOW_HEIGHT 600
@@ -118,15 +112,6 @@ typedef struct s_data
 	t_img	*img;
 }t_data;
 
-// typedef struct s_img
-// {
-// 	void	*player_up;
-// 	void	*player_left;
-// 	void	*player_right;
-// 	void	*player_down;
-// 	void	*background;
-// }				t_img;
-
 char	**read_map(const char *file);
 int		main(int argc, char **argv);
 void	load_textures(t_game *game);
@@ -137,6 +122,7 @@ int		count_chars(char **map, char c);
 int		validate_map(char **map);
 void	move_player(t_game *game, int px, int py);
 int		handle_key(int key, void *param);
+void	process_movement(t_game *game, int px, int py);
 char	**load_map(const char *file_path);
 int		validate_map(char **map);
 void	print_map(char **map);
@@ -155,8 +141,11 @@ int		get_map_width(char **map);
 int		get_map_height(char **map);
 void	init_images(t_game *game);
 void	load_image(t_game *game, void **img, char *path);
-void	free_map(char **map, int size);
 char	*get_next_line(int fd);
 int		handle_exit(void *param);
-
+void	flood_fill(char **map, int x, int y);
+int		is_valid_path(t_game *game);
+int		check_unreachable(t_game *game, char **map_copy);
+void	free_map(char **map, int size);
+char	**copy_map(char **map);
 #endif

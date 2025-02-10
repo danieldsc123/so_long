@@ -6,75 +6,127 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 15:52:24 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/08 20:19:28 by danielda         ###   ########.fr       */
+/*   Updated: 2025/02/09 21:22:37 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-#include "../inc/so_long.h"
-
-// Função flood fill para percorrer o mapa
-int check_visit_maps(t_game *game, char **maps, int x, int y)
+void	flood_fill(char **map, int x, int y)
 {
-    // Verifica se a posição está fora dos limites ou é uma parede
-    if (x < 0 || y < 0 || !maps[y] || x >= (int)ft_strlen(maps[y]) || maps[y][x] == '1' || maps[y][x] == 'V')
-        return (0);
-    
-    // Marca o espaço como visitado
-    if (maps[y][x] == 'C')  // Se encontrar um coletável, diminui a contagem
-    {
-        game->collectibles--;
-        maps[y][x] = 'V'; // Marca como visitado
-    }
-    else if (maps[y][x] == '0')  // Se for um espaço vazio, apenas marca como visitado
-    {
-        maps[y][x] = 'V';
-    }
-
-    // Chama recursivamente as direções para as próximas células
-    check_visit_maps(game, maps, x + 1, y);
-    check_visit_maps(game, maps, x - 1, y);
-    check_visit_maps(game, maps, x, y + 1);
-    check_visit_maps(game, maps, x, y - 1);
-
-    return (1);
+	if (x < 0 || y < 0 || !map[y] || x >= (int)ft_strlen(map[y])
+		|| map[y][x] == '1' || map[y][x] == 'V')
+		return ;
+	map[y][x] = 'V';
+	flood_fill(map, x + 1, y);
+	flood_fill(map, x - 1, y);
+	flood_fill(map, x, y + 1);
+	flood_fill(map, x, y - 1);
 }
 
-// Função que verifica se o mapa tem um caminho válido
-int is_valid_path(t_game *game)
+void	free_map(char **map, int size)
 {
-    char    **map_copy;
-    int     y;
-    int     x;
+	int	i;
 
-    // Copia o mapa para não modificar o original
-    map_copy = copy_map(game->map);
-    if (!map_copy)
-        return (0);
+	if (!map)
+		return ;
+	i = 0;
+	while (i < size)
+	{
+		free(map[i]);
+		i++;
+	}
+	free(map);
+}
 
-    // Chama a função de flood fill a partir da posição do jogador
-    check_visit_maps(game, map_copy, game->player_x, game->player_y);
+char	**copy_map(char **map)
+{
+	int		i;
+	char	**new_map;
+	int		height;
 
-    // Verifica se ainda existem coletáveis ou se a saída não foi atingida
-    y = 0;
-    while (map_copy[y])
-    {
-        x = 0;
-        while (map_copy[y][x])
-        {
-            if (game->map[y][x] == 'C' || game->map[y][x] == 'E')
-            {
-                if (map_copy[y][x] != 'V')  // Se algum coletável ou a saída não foi visitado
-                {
-                    free_map(map_copy, get_map_height(game->map));
-                    return (0);
-                }
-            }
-            x++;
-        }
-        y++;
-    }
-    free_map(map_copy, get_map_height(game->map));
-    return (1);
+	height = get_map_height(map);
+	new_map = malloc(sizeof(char *) * (height + 1));
+	if (!new_map)
+		return (NULL);
+	i = 0;
+	while (map[i])
+	{
+		new_map[i] = ft_strdup(map[i]);
+		if (!new_map[i])
+		{
+			free_map(new_map, i);
+			return (NULL);
+		}
+		i++;
+	}
+	new_map[i] = NULL;
+	return (new_map);
+}
+
+// int	is_valid_path(t_game *game)
+// {
+// 	char	**map_copy;
+// 	int		x;
+// 	int		y;
+
+// 	map_copy = copy_map(game->map);
+// 	if (!map_copy)
+// 		return (0);
+// 	flood_fill(map_copy, game->player_x, game->player_y);
+// 	y = 0;
+// 	while (map_copy[y])
+// 	{
+// 		x = 0;
+// 		while (map_copy[y][x])
+// 		{
+// 			if (game->map[y][x] == 'C' || game->map[y][x] == 'E')
+// 			{
+// 				if (map_copy[y][x] != 'V')
+// 				{
+// 					free_map(map_copy, get_map_height(game->map));
+// 					return (0);
+// 				}
+// 			}
+// 			x++;
+// 		}
+// 	y++;
+// 	}
+// 	free_map(map_copy, get_map_height(game->map));
+// 	return (1);
+// }
+int	check_unreachable(t_game *game, char **map_copy)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (map_copy[y])
+	{
+		x = 0;
+		while (map_copy[y][x])
+		{
+			if ((game->map[y][x] == 'C' || game->map[y][x] == 'E')
+				&& map_copy[y][x] != 'V')
+			{
+				free_map(map_copy, get_map_height(game->map));
+				return (0);
+			}
+			x++;
+		}
+		y++;
+	}
+	free_map(map_copy, get_map_height(game->map));
+	return (1);
+}
+
+int	is_valid_path(t_game *game)
+{
+	char	**map_copy;
+
+	map_copy = copy_map(game->map);
+	if (!map_copy)
+		return (0);
+	flood_fill(map_copy, game->player_x, game->player_y);
+	return (check_unreachable(game, map_copy));
 }

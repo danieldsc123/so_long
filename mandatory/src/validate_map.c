@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 12:29:38 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/08 20:09:28 by danielda         ###   ########.fr       */
+/*   Updated: 2025/02/09 21:04:15 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ int	count_chars(char **map, char c)
 
 int	validate_map(char **map)
 {
+	t_game	game;
+
 	if (!is_surrounded_by_walls(map))
 		return (0);
 	if (count_chars(map, 'P') != 1)
@@ -67,5 +69,10 @@ int	validate_map(char **map)
 		return (0);
 	if (count_chars(map, 'C') < 1)
 		return (0);
+	if (!is_valid_path(&game))
+	{
+		write(2, "Error: No valid path\n", 21);
+		return (0);
+	}
 	return (1);
 }
