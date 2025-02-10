@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 15:52:24 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/09 21:22:37 by danielda         ###   ########.fr       */
+/*   Updated: 2025/02/09 22:45:04 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,37 +64,6 @@ char	**copy_map(char **map)
 	return (new_map);
 }
 
-// int	is_valid_path(t_game *game)
-// {
-// 	char	**map_copy;
-// 	int		x;
-// 	int		y;
-
-// 	map_copy = copy_map(game->map);
-// 	if (!map_copy)
-// 		return (0);
-// 	flood_fill(map_copy, game->player_x, game->player_y);
-// 	y = 0;
-// 	while (map_copy[y])
-// 	{
-// 		x = 0;
-// 		while (map_copy[y][x])
-// 		{
-// 			if (game->map[y][x] == 'C' || game->map[y][x] == 'E')
-// 			{
-// 				if (map_copy[y][x] != 'V')
-// 				{
-// 					free_map(map_copy, get_map_height(game->map));
-// 					return (0);
-// 				}
-// 			}
-// 			x++;
-// 		}
-// 	y++;
-// 	}
-// 	free_map(map_copy, get_map_height(game->map));
-// 	return (1);
-// }
 int	check_unreachable(t_game *game, char **map_copy)
 {
 	int	x;
