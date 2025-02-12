@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 15:52:24 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/09 22:45:04 by danielda         ###   ########.fr       */
+/*   Updated: 2025/02/10 18:21:35 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,10 @@ char	**copy_map(char **map)
 	height = get_map_height(map);
 	new_map = malloc(sizeof(char *) * (height + 1));
 	if (!new_map)
+	{
+		free(new_map);
 		return (NULL);
+	}
 	i = 0;
 	while (map[i])
 	{
@@ -61,6 +64,7 @@ char	**copy_map(char **map)
 		i++;
 	}
 	new_map[i] = NULL;
+	free(new_map);
 	return (new_map);
 }
 

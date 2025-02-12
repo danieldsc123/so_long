@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:11:45 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/09 22:46:32 by danielda         ###   ########.fr       */
+/*   Updated: 2025/02/11 20:14:18 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	initialize_game(t_game *game, char *map_path)
 	if (!game->mlx)
 	{
 		write(2, "Error: Failed to initialize MLX\n", 32);
-		free(game);
+		free(game->mlx);
 		exit(1);
 	}
 	game->map = read_map(map_path);
@@ -53,6 +53,7 @@ int	main(int argc, char **argv)
 	t_game	*game;
 
 	game = malloc((sizeof(t_game) * 1));
+	game->steps = 0;
 	if (!game)
 		return (1);
 	if (argc != 2)

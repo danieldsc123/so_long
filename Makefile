@@ -6,7 +6,7 @@
 #    By: danielda <danielda@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/07 20:16:54 by asilveir          #+#    #+#              #
-#    Updated: 2025/02/09 21:29:54 by danielda         ###   ########.fr        #
+#    Updated: 2025/02/11 18:40:58 by danielda         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,8 +23,6 @@ SRC = mandatory/src/so_long.c \
        mandatory/src/render_map.c \
        mandatory/src/validate_map.c \
        mandatory/src/exit.c \
-       mandatory/src/map_downl.c \
-       mandatory/src/print_map.c \
        mandatory/src/flood.c \
        mandatory/src/width_height.c \
        mandatory/src/player_position.c \
@@ -32,7 +30,7 @@ SRC = mandatory/src/so_long.c \
 	mandatory/src/movements.c \
 
 # Compiladores e flags
-CC = cc -Wall -Wextra -Werror
+CC = cc -Wall -Wextra -Werror -g3
 CFLAGS = -I./mandatory/inc -I$(MLX_DIR) -I$(LIBFT_DIR)
 
 # Diretórios da Libft

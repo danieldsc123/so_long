@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:12:51 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/09 21:23:26 by danielda         ###   ########.fr       */
+/*   Updated: 2025/02/11 21:14:09 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,6 @@ void	move_player(t_game *game, int px, int py);
 int		handle_key(int key, void *param);
 void	process_movement(t_game *game, int px, int py);
 char	**load_map(const char *file_path);
-int		validate_map(char **map);
 void	print_map(char **map);
 void	ft_draw_wall(int x, int y, t_data data);
 void	ft_draw_floor(int x, int y, t_data data);
@@ -148,4 +147,5 @@ int		is_valid_path(t_game *game);
 int		check_unreachable(t_game *game, char **map_copy);
 void	free_map(char **map, int size);
 char	**copy_map(char **map);
+
 #endif

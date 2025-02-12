@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:08:21 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/09 22:45:30 by danielda         ###   ########.fr       */
+/*   Updated: 2025/02/11 18:41:21 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ char	**read_map(const char *file)
 	if (!map)
 	{
 		close(fd);
+		free(map);
 		return (NULL);
 	}
 	line = get_next_line(fd);

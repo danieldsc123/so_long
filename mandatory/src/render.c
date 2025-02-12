@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 15:52:37 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/09 23:51:29 by danielda         ###   ########.fr       */
+/*   Updated: 2025/02/11 20:28:29 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	load_textures(t_game *game)
 		|| !game->exit || !game->collectible)
 	{
 		write(2, "Error\nFailed to load textures\n", 31);
+		exit_game(game);
 		exit(1);
 	}
 }

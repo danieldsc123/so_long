@@ -6,16 +6,20 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 13:21:27 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/09 21:27:54 by danielda         ###   ########.fr       */
+/*   Updated: 2025/02/10 20:06:16 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
+#include <stdlib.h>
+#include <unistd.h>
+#include <mlx.h>
 
 void	move_player(t_game *game, int px, int py)
 {
 	char	*step_count;
 
+	step_count = NULL;
 	game->collectibles = count_chars(game->map, 'C');
 	if (game->map[py][px] == 'C')
 		game->collectibles--;
@@ -24,12 +28,10 @@ void	move_player(t_game *game, int px, int py)
 	game->player_y = py;
 	game->steps++;
 	step_count = ft_itoa(game->steps);
-	if (!step_count)
-		return ;
-	write(1, "passo: ", 8);
+	write(1, "passo: ", 7);
 	write(1, step_count, ft_strlen(step_count));
-	write(1, "\n", 1);
 	free(step_count);
+	write(1, "\n", 1);
 	if (game->map[py][px] == 'E' && game->collectibles == 0)
 		exit_game(game);
 	game->map[py][px] = 'P';
