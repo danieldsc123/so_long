@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:12:51 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/11 21:14:09 by danielda         ###   ########.fr       */
+/*   Updated: 2025/02/13 02:13:17 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # include <X11/keysym.h>
 # include <X11/X.h>
 # include <string.h> 
+# include <ctype.h>
 
 # define TILE_SIZE 32
 # define WND_NAME "so_long"
@@ -112,7 +113,12 @@ typedef struct s_data
 	t_img	*img;
 }t_data;
 
-char	**read_map(const char *file);
+char	**read_map(char *file);
+int		is_valid_extension(char *file);
+int	is_valid_map(char **map);
+int		is_map_rectangular(char **map);
+int		is_valid_map(char **map);
+int		is_map_closed(char **map);
 int		main(int argc, char **argv);
 void	load_textures(t_game *game);
 int		render_map(t_game *game);
@@ -145,7 +151,10 @@ int		handle_exit(void *param);
 void	flood_fill(char **map, int x, int y);
 int		is_valid_path(t_game *game);
 int		check_unreachable(t_game *game, char **map_copy);
-void	free_map(char **map, int size);
+void	free_map_map(char **map, int size);
 char	**copy_map(char **map);
-
+void	free_game(t_game *game);
+char	allocate_map(t_game *game);
+void	execute_map_validations(char **map);
+char	**parse_map(int argc, char **argv);
 #endif

@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 13:21:27 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/10 20:06:16 by danielda         ###   ########.fr       */
+/*   Updated: 2025/02/12 16:30:19 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	handle_key(int key, void *param)
 	px = game->player_x;
 	py = game->player_y;
 	if (key == KEY_ESC)
-		mlx_loop_end(game->mlx);
+		exit_game(game);
 	else if (key == KEY_W)
 		process_movement(game, px, py - 1);
 	else if (key == KEY_A)

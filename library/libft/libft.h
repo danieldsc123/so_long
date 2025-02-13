@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 19:10:38 by danielda          #+#    #+#             */
-/*   Updated: 2025/01/31 17:59:39 by danielda         ###   ########.fr       */
+/*   Updated: 2025/02/13 01:33:43 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,9 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
-// int		ft_endl(char *buffer);
-// char	*string_to_add(char *s);
-// char	*get_current_line(char *stash);
-// char	*get_next_line(int fd);
-// char	*read_fd(int fd, char *stash);
 char	*get_next_line(int fd);
 char	*ft_extract_line(char *rl);
 char	*ft_check_buffer(int fd, char **rl);
 char	*ft_get_temp(int bytes_read, char *buffer, char *rl);
+int		ft_strcmp(char *s1, char *s2);
 #endif

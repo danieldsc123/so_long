@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 17:02:27 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/11 21:00:30 by danielda         ###   ########.fr       */
+/*   Updated: 2025/02/12 16:12:08 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void	load_image(t_game *game, void **img, char *path)
 		write(2, "Error: Failed to load ", 24);
 		write(2, path, ft_strlen(path));
 		write(2, "\n", 1);
+		exit_game(game);
 		exit(1);
 	}
 }

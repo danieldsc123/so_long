@@ -6,7 +6,7 @@
 #    By: danielda <danielda@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/07 20:16:54 by asilveir          #+#    #+#              #
-#    Updated: 2025/02/11 18:40:58 by danielda         ###   ########.fr        #
+#    Updated: 2025/02/12 21:33:40 by danielda         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRC = mandatory/src/so_long.c \
        mandatory/src/player_position.c \
 	mandatory/src/render.c \
 	mandatory/src/movements.c \
+	mandatory/src/verify_map.c \
 
 # Compiladores e flags
 CC = cc -Wall -Wextra -Werror -g3
@@ -39,7 +40,7 @@ LIBFT = $(LIBFT_DIR)/libft.a
 
 # Flags de linkagem
 MLX_DIR = ./library/minilibx-linux/minilibx-linux
-LDFLAGS = -L$(LIBFT_DIR) -lft -L$(MLX_DIR) -lmlx_Linux -lX11 -lXext
+LDFLAGS = -L$(LIBFT_DIR) -lft -L$(MLX_DIR) -lmlx -lX11 -lXext
 
 # Regra principal
 all: $(LIBFT) $(NAME)

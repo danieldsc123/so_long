@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:11:45 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/11 20:14:18 by danielda         ###   ########.fr       */
+/*   Updated: 2025/02/13 01:55:33 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ int	main(int argc, char **argv)
 		free(game);
 		return (1);
 	}
+	parse_map(argc, argv);
 	initialize_game(game, argv[1]);
 	init_images(game);
 	render_map(game);
