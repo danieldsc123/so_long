@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:08:21 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/13 02:13:00 by danielda         ###   ########.fr       */
+/*   Updated: 2025/02/13 22:44:50 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,6 @@ char	**parse_map(int argc, char **argv)
 		write(1, "Error\nInvalid number of arguments\n", 35);
 		exit(1);
 	}
-	printf("argv[1]: %s\n", argv[1]);
 	if (is_valid_extension(argv[1]) != 1)
 	{
 		write(1, "Error\nInvalid file extension\n", 29);
@@ -95,18 +94,25 @@ char	**parse_map(int argc, char **argv)
 		write(1, "Error\nInvalid map\n", 19);
 		exit(1);
 	}
-	execute_map_validations(map);
 	return (map);
 }
 
-void	execute_map_validations(char **map)
+int	execute_map_validations(t_game *game)
 {
-	if (is_valid_map(map) == 1)
+	if (!is_map_rectangular(game->map))
 	{
-		write(1, "Error\nInvalid map line\n", 23);
-		exit(1);
+		write(1, "Error\nInvalid map structure\n", 29);
+		return (0);
 	}
-	// is_map_rectangular(map);
-	// is_map_closed(map);
-	// allocate_map(map);
+	if (!is_map_closed(game->map))
+	{
+		write(1, "Error\nInvalid map wall\n", 28);
+		return (0);
+	}
+	if (!components_check_maps(game))
+	{
+		write(1, "Error\nInvalid duplicates\n", 28);
+		return (0);
+	}
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:12:51 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/13 02:13:17 by danielda         ###   ########.fr       */
+/*   Updated: 2025/02/13 21:47:11 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ typedef struct s_game
 	int		map_width;
 	int		map_height;
 	int		steps;
+	int		count_player;
+	int		count_exit;
 }t_game;
 
 typedef struct s_img
@@ -115,7 +117,7 @@ typedef struct s_data
 
 char	**read_map(char *file);
 int		is_valid_extension(char *file);
-int	is_valid_map(char **map);
+int		is_valid_map(char **map);
 int		is_map_rectangular(char **map);
 int		is_valid_map(char **map);
 int		is_map_closed(char **map);
@@ -125,7 +127,7 @@ int		render_map(t_game *game);
 void	render_tile(t_game *game, char tile, int x, int y);
 int		surrounded_by_walls(char **map);
 int		count_chars(char **map, char c);
-int		validate_map(char **map);
+int		validate_map(t_game *game);
 void	move_player(t_game *game, int px, int py);
 int		handle_key(int key, void *param);
 void	process_movement(t_game *game, int px, int py);
@@ -155,6 +157,7 @@ void	free_map_map(char **map, int size);
 char	**copy_map(char **map);
 void	free_game(t_game *game);
 char	allocate_map(t_game *game);
-void	execute_map_validations(char **map);
+int		execute_map_validations(t_game *game);
 char	**parse_map(int argc, char **argv);
+int		components_check_maps(t_game *game);
 #endif

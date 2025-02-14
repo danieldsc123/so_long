@@ -6,7 +6,7 @@
 #    By: danielda <danielda@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/07 20:16:54 by asilveir          #+#    #+#              #
-#    Updated: 2025/02/12 21:33:40 by danielda         ###   ########.fr        #
+#    Updated: 2025/02/13 19:51:53 by danielda         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ SRC = mandatory/src/so_long.c \
 	mandatory/src/render.c \
 	mandatory/src/movements.c \
 	mandatory/src/verify_map.c \
+	mandatory/src/verify_map2.c \
 
 # Compiladores e flags
 CC = cc -Wall -Wextra -Werror -g3

@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 15:52:24 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/10 18:21:35 by danielda         ###   ########.fr       */
+/*   Updated: 2025/02/13 22:58:02 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@ void	flood_fill(char **map, int x, int y)
 	if (x < 0 || y < 0 || !map[y] || x >= (int)ft_strlen(map[y])
 		|| map[y][x] == '1' || map[y][x] == 'V')
 		return ;
+	if (map[y][x] == 'E')
+	{
+		map[y][x] = 'V';
+		return ;
+	}	
 	map[y][x] = 'V';
 	flood_fill(map, x + 1, y);
 	flood_fill(map, x - 1, y);
@@ -48,10 +53,7 @@ char	**copy_map(char **map)
 	height = get_map_height(map);
 	new_map = malloc(sizeof(char *) * (height + 1));
 	if (!new_map)
-	{
-		free(new_map);
 		return (NULL);
-	}
 	i = 0;
 	while (map[i])
 	{
@@ -64,7 +66,6 @@ char	**copy_map(char **map)
 		i++;
 	}
 	new_map[i] = NULL;
-	free(new_map);
 	return (new_map);
 }
 
@@ -81,10 +82,7 @@ int	check_unreachable(t_game *game, char **map_copy)
 		{
 			if ((game->map[y][x] == 'C' || game->map[y][x] == 'E')
 				&& map_copy[y][x] != 'V')
-			{
-				free_map(map_copy, get_map_height(game->map));
 				return (0);
-			}
 			x++;
 		}
 		y++;
