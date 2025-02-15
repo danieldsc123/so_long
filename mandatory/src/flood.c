@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 15:52:24 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/13 22:58:02 by danielda         ###   ########.fr       */
+/*   Updated: 2025/02/14 22:31:04 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,14 @@ void	flood_fill(char **map, int x, int y)
 	flood_fill(map, x, y - 1);
 }
 
-void	free_map(char **map, int size)
+void	free_map(char **map)
 {
 	int	i;
 
 	if (!map)
 		return ;
 	i = 0;
-	while (i < size)
+	while (map[i])
 	{
 		free(map[i]);
 		i++;
@@ -60,7 +60,7 @@ char	**copy_map(char **map)
 		new_map[i] = ft_strdup(map[i]);
 		if (!new_map[i])
 		{
-			free_map(new_map, i);
+			free_map(new_map);
 			return (NULL);
 		}
 		i++;
@@ -87,7 +87,7 @@ int	check_unreachable(t_game *game, char **map_copy)
 		}
 		y++;
 	}
-	free_map(map_copy, get_map_height(game->map));
+	free_map(map_copy);
 	return (1);
 }
 

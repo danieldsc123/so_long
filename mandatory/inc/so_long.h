@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:12:51 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/14 21:26:41 by danielda         ###   ########.fr       */
+/*   Updated: 2025/02/14 22:54:13 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,14 +150,14 @@ void	init_images(t_game *game);
 void	load_image(t_game *game, void **img, char *path);
 void	free_game(t_game *game);
 // void	free_map(char **map);
-void	free_map(char **map, int size);
+void	free_map(char **map);
 void	flood_fill(char **map, int x, int y);
 char	*get_next_line(int fd);
 char	**load_map(const char *file_path);
 char	**copy_map(char **map);
 char	allocate_map(t_game *game);
 char	**read_map(char *file);
-char	**parse_map(int argc, char **argv);
+int		parse_map(int argc, char **argv);
 // int		is_valid_map(char **map);
 // int		is_valid_map(char **map);
 // int		surrounded_by_walls(char **map);

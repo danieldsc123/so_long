@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:08:21 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/14 20:30:57 by danielda         ###   ########.fr       */
+/*   Updated: 2025/02/14 22:53:42 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,27 +44,28 @@ char	**read_map(char *file)
 	return (map);
 }
 
-char	**parse_map(int argc, char **argv)
+int	parse_map(int argc, char **argv)
 {
 	char	**map;
 
 	if (argc != 2)
 	{
 		write(1, "Error\nInvalid number of arguments\n", 35);
-		exit(1);
+		return (0);
 	}
 	if (is_valid_extension(argv[1]) != 1)
 	{
 		write(1, "Error\nInvalid file extension\n", 29);
-		exit(1);
+		return (0);
 	}
 	map = read_map(argv[1]);
 	if (!map)
 	{
 		write(1, "Error\nInvalid map\n", 19);
-		exit(1);
+		return (0);
 	}
-	return (map);
+	free_map(map);
+	return (1);
 }
 
 int	execute_map_validations(t_game *game)
