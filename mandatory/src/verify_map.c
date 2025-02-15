@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 21:32:30 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/13 22:34:28 by danielda         ###   ########.fr       */
+/*   Updated: 2025/02/14 19:52:18 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,3 @@ int	is_map_closed(char **map)
 	}
 	return (1);
 }
-
-// char	allocate_map(void)
-// {
-// 	return (malloc(sizeof(char *) * 1024));
-// }

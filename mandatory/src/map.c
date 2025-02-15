@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:08:21 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/13 22:44:50 by danielda         ###   ########.fr       */
+/*   Updated: 2025/02/14 20:30:57 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,36 +14,6 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include "../inc/so_long.h"
-
-// char	**read_map(const char *file)
-// {
-// 	int		fd;
-// 	int		i;
-// 	char	*line;
-// 	char	**map;
-
-// 	i = 0;
-// 	if (!is_valid_extension(file))
-// 		return (write(1, "Invalid file extension\n", 23), NULL);
-// 	fd = open(file, O_RDONLY);
-// 	if (fd < 0)
-// 		return (write(1, "Error opening file\n", 19), NULL);
-// 	map = allocate_map();
-// 	if (!map)
-// 		return (close(fd), write(1, "Memory allocation error\n", 24), NULL);
-// 	while ((line = get_next_line(fd)) != NULL)
-// 	{
-// 		if (!is_valid_line(line))
-// 			return (write(1, "Invalid map line\n", 18)
-// 				, close(fd), free(map), NULL);
-// 		map[i++] = line;
-// 	}
-// 	map[i] = NULL;
-// 	close(fd);
-// 	if (!is_map_rectangular(map) || !is_map_closed(map))
-// 		return (write(1, "Invalid map structure\n", 23), free(map), NULL);
-// 	return (map);
-// }
 
 char	**read_map(char *file)
 {

@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:11:45 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/13 23:01:23 by danielda         ###   ########.fr       */
+/*   Updated: 2025/02/14 21:31:25 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ int	main(int argc, char **argv)
 	t_game	*game;
 
 	game = malloc((sizeof(t_game) * 1));
-	// free(game->mlx);
 	game->steps = 0;
 	if (!game)
 		return (1);
@@ -68,5 +67,30 @@ int	main(int argc, char **argv)
 	mlx_hook(game->win, 17, 0, handle_exit, game);
 	mlx_loop(game->mlx);
 	exit_game(game);
+	// free_game(game);
 	return (0);
-}	
+}
+
+// void	free_game(t_game *game)
+// {
+// 	if (!game)
+// 		return ;
+// 	if (game->map)
+// 		free_map(game->map);
+// 	// free(game);
+// }
+
+// void	free_map(char **map)
+// {
+// 	int	i;
+
+// 	if (!map)
+// 		return ;
+// 	i = 0;
+// 	while (map[i])
+// 	{
+// 		free(map[i]);
+// 		i++;
+// 	}
+// 	free(map);
+// }

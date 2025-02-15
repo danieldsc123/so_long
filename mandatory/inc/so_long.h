@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:12:51 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/13 21:47:11 by danielda         ###   ########.fr       */
+/*   Updated: 2025/02/14 21:26:41 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,23 +115,27 @@ typedef struct s_data
 	t_img	*img;
 }t_data;
 
-char	**read_map(char *file);
 int		is_valid_extension(char *file);
-int		is_valid_map(char **map);
 int		is_map_rectangular(char **map);
-int		is_valid_map(char **map);
 int		is_map_closed(char **map);
 int		main(int argc, char **argv);
-void	load_textures(t_game *game);
 int		render_map(t_game *game);
-void	render_tile(t_game *game, char tile, int x, int y);
-int		surrounded_by_walls(char **map);
 int		count_chars(char **map, char c);
 int		validate_map(t_game *game);
-void	move_player(t_game *game, int px, int py);
 int		handle_key(int key, void *param);
+int		find_player_x(char **map);
+int		find_player_y(char **map);
+int		get_map_width(char **map);
+int		get_map_height(char **map);
+int		handle_exit(void *param);
+int		is_valid_path(t_game *game);
+int		check_unreachable(t_game *game, char **map_copy);
+int		execute_map_validations(t_game *game);
+int		components_check_maps(t_game *game);
+void	load_textures(t_game *game);
+void	render_tile(t_game *game, char tile, int x, int y);
+void	move_player(t_game *game, int px, int py);
 void	process_movement(t_game *game, int px, int py);
-char	**load_map(const char *file_path);
 void	print_map(char **map);
 void	ft_draw_wall(int x, int y, t_data data);
 void	ft_draw_floor(int x, int y, t_data data);
@@ -142,22 +146,19 @@ void	exit_game(t_game *game);
 void	print_map_term(char **argv);
 void	print_map(char **map);
 void	initialize_game(t_game *game, char *map_path);
-int		find_player_x(char **map);
-int		find_player_y(char **map);
-int		get_map_width(char **map);
-int		get_map_height(char **map);
 void	init_images(t_game *game);
 void	load_image(t_game *game, void **img, char *path);
-char	*get_next_line(int fd);
-int		handle_exit(void *param);
-void	flood_fill(char **map, int x, int y);
-int		is_valid_path(t_game *game);
-int		check_unreachable(t_game *game, char **map_copy);
-void	free_map_map(char **map, int size);
-char	**copy_map(char **map);
 void	free_game(t_game *game);
+// void	free_map(char **map);
+void	free_map(char **map, int size);
+void	flood_fill(char **map, int x, int y);
+char	*get_next_line(int fd);
+char	**load_map(const char *file_path);
+char	**copy_map(char **map);
 char	allocate_map(t_game *game);
-int		execute_map_validations(t_game *game);
+char	**read_map(char *file);
 char	**parse_map(int argc, char **argv);
-int		components_check_maps(t_game *game);
+// int		is_valid_map(char **map);
+// int		is_valid_map(char **map);
+// int		surrounded_by_walls(char **map);
 #endif
