@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 19:03:48 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/14 21:05:44 by danielda         ###   ########.fr       */
+/*   Updated: 2025/02/14 23:33:31 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,11 @@ int	components_check_maps(t_game *game)
 		while (++j < game->map_width)
 		{
 			if (!is_valid_component(game->map[i][j], game))
-			{
-				ft_putstr_fd("ERROR: NEED ALL COMPONENTS", 2);
-				return (0);
-			}
+				return (ft_putstr_fd("ERROR: NEED ALL COMPONENTS", 2), 0);
 		}
 	}
 	if (game->count_player != 1 || game->count_exit != 1
 		|| game->collectibles < 1)
-	{	ft_putstr_fd("ERROR: INVALID COMPONENT", 2);
-		return (0);
-	}
+		return (ft_putstr_fd("ERROR: INVALID COMPONENT", 2), 0);
 	return (1);
 }
