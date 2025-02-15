@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 13:48:51 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/14 22:57:46 by danielda         ###   ########.fr       */
+/*   Updated: 2025/02/15 20:03:54 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@ void	exit_game(t_game *game)
 	int	i;
 
 	i = 0;
-	while (game->map && game->map[i])
-		free(game->map[i++]);
-	free(game->map);
+	free_map(game->map);
 	if (game->wall)
 		mlx_destroy_image(game->mlx, game->wall);
 	if (game->floor)

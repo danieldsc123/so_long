@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:11:45 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/14 23:35:49 by danielda         ###   ########.fr       */
+/*   Updated: 2025/02/15 19:50:44 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 	{
 		write(2, "Error\nUsage: ./so_long <map.ber>\n", 33);
+		free_map(game->map);
 		free(game);
 		return (1);
 	}

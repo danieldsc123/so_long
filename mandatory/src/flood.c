@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 15:52:24 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/14 22:31:04 by danielda         ###   ########.fr       */
+/*   Updated: 2025/02/15 19:58:25 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ char	**copy_map(char **map)
 	int		height;
 
 	height = get_map_height(map);
-	new_map = malloc(sizeof(char *) * (height + 1));
+	new_map = ft_calloc(sizeof(char *), (height + 1));
 	if (!new_map)
 		return (NULL);
 	i = 0;
@@ -82,7 +82,10 @@ int	check_unreachable(t_game *game, char **map_copy)
 		{
 			if ((game->map[y][x] == 'C' || game->map[y][x] == 'E')
 				&& map_copy[y][x] != 'V')
+			{
+				free_map(map_copy);
 				return (0);
+			}
 			x++;
 		}
 		y++;

@@ -6,14 +6,14 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:12:51 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/14 23:29:35 by danielda         ###   ########.fr       */
+/*   Updated: 2025/02/15 19:50:16 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "../../library/minilibx-linux/minilibx-linux/mlx.h"
+# include "../../library/minilibx-linux/mlx.h"
 # include "../../library/libft/libft.h"
 # include <unistd.h>
 # include <fcntl.h>
@@ -21,7 +21,6 @@
 # include <stdlib.h>
 # include <math.h>
 # include <stdio.h>
-//# include <mlx.h>
 # include <X11/keysym.h>
 # include <X11/X.h>
 # include <string.h> 
@@ -38,12 +37,11 @@
 # define EXIT 'E'
 # define COLLECTIBLE 'C'
 
-// Macros para códigos de tecla
-# define KEY_ESC 65307   // Código para a tecla ESC
-# define KEY_W   119     // Código para a tecla W
-# define KEY_A   97      // Código para a tecla A
-# define KEY_S   115     // Código para a tecla S
-# define KEY_D   100     // Código para a tecla D
+# define KEY_ESC 65307
+# define KEY_W   119
+# define KEY_A   97 
+# define KEY_S   115
+# define KEY_D   100
 
 typedef struct s_map
 {

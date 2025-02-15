@@ -6,7 +6,7 @@
 #    By: danielda <danielda@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/07 20:16:54 by asilveir          #+#    #+#              #
-#    Updated: 2025/02/15 18:12:16 by danielda         ###   ########.fr        #
+#    Updated: 2025/02/15 19:53:44 by danielda         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ SRC = mandatory/src/so_long.c \
 	mandatory/src/verify_map2.c \
 
 # Compiladores e flags
-CC = cc -Wall -Wextra -Werror
+CC = cc -Wall -Wextra -Werror -g3
 CFLAGS = -I./mandatory/inc -I$(MLX_DIR) -I$(LIBFT_DIR)
 
 # Diretórios da Libft
